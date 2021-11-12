@@ -14,30 +14,50 @@ const routes = [
     component: Login
   },
   {
+    path: '/login',
+    name: 'Login1',
+    component: Login
+  },
+  {
     path: '/Index',
     name: 'Index',
-    redirect: {name:"Blogs"}
+    redirect: {name:"Blogs"},
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/blogs',
     name: 'Blogs',
-    component: Blogs
+    component: Blogs,
+    meta: {
+      requireAuth: true
+    }
   },
 
   {
     path: '/blog/add',
     name: 'BlogAdd',
-    component: BlogEdit
+    component: BlogEdit,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/blog/:blogId',
     name: 'BlogDetail',
-    component: BlogDetail
+    component: BlogDetail,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/blog/:blogId/edit',
     name: 'BlogEdit',
-    component: BlogEdit
+    component: BlogEdit,
+    meta: {
+      requireAuth: true
+    }
   }
 
   /*{

@@ -30,6 +30,7 @@
         data() {
             return {
                 ruleForm: {
+                    id: '',
                     title: '',
                     description: '',
                     content: ''
@@ -59,6 +60,12 @@
                             }
                         }).then(res =>{
                             console.log(res)
+                            this.$alert('操作成功', '提示', {
+                                confirmButtonText: '确定',
+                                callback: action => {
+                                    _this.$router.push("/blogs")
+                                }
+                            });
                         })
 
                     } else {
@@ -69,6 +76,21 @@
             },
             resetForm(formName) {
                 this.$refs[formName].resetFields();
+            }
+        },
+        created() {
+            const blogId = this.$route.params.blogId
+            console.log(blogId)
+            if(blogId){
+                this.$axios.get('/blog/'+blogId).then(res => {
+                    const blog = res.data.data
+                    const _this = this
+                    _this.ruleForm.id=blog.id
+                    _this.ruleForm.title=blog.title
+                    _this.ruleForm.description=blog.description
+                    _this.ruleForm.content=blog.content
+
+                })
             }
         }
 

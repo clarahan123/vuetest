@@ -8,6 +8,7 @@ import axios from 'axios'
 import "babel-polyfill"
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import  './permission'
 
 
 import "./axios"
